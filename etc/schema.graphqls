@@ -1,0 +1,70 @@
+type Mutation {
+    addAggregateProductsToCart(input: AddAggregateProductsToCartInput): AddAggregateProductsToCartOutput @resolver(class: "Magento\\QuoteGraphQl\\Model\\Resolver\\AddSimpleProductsToCart")
+}
+
+input AddAggregateProductsToCartInput {
+    cart_id: String!
+    cart_items: [AggregateProductCartItemInput!]!
+}
+
+input AggregateProductCartItemInput {
+    data: CartItemInput!
+    customizable_options:[CustomizableOptionInput!]
+}
+
+type AddAggregateProductsToCartOutput {
+    cart: Cart!
+}
+
+type AggregateCartItem implements CartItemInterface @doc(description: "Aggregate Cart Item") {
+    customizable_options: [SelectedCustomizableOption]! @resolver(class: "Magento\\QuoteGraphQl\\Model\\Resolver\\CustomizableOptions")
+    aggregate_options: [SelectedAggregateOption]! @resolver(class: "Nfourteen\\AggregateProductGraphQl\\Model\\Resolver\\Cart\\AggregateOptions")
+}
+
+type SelectedAggregateOption {
+    label: String!
+    values: [SelectedAggregateOptionValue]!
+}
+
+type SelectedAggregateOptionValue {
+    product_name: String!
+    quantity: Float!
+}
+
+type AggregateProduct implements ProductInterface, CustomizableProductInterface, PhysicalProductInterface, RoutableInterface @doc(description: "AggregateProduct defines a product that is used for grouping fixed sets of products") {
+    items: [AggregateItem] @resolver(class: "Nfourteen\\AggregateProductGraphQl\\Model\\Resolver\\AggregateItems")
+}
+
+type AggregateItem {
+    qty: Float!
+    product: ProductInterface @resolver(class: "Magento\\CatalogGraphQl\\Model\\Resolver\\Product")
+}
+
+type AggregateOrderItem implements OrderItemInterface {
+    aggregate_options: [AggregateOrderOption] @resolver(class: "Nfourteen\\AggregateProductGraphQl\\Model\\Resolver\\Order\\Item\\AggregateOptions")
+}
+
+type AggregateInvoiceItem implements InvoiceItemInterface {
+    aggregate_options: [AggregateOrderOption] @resolver(class: "Nfourteen\\AggregateProductGraphQl\\Model\\Resolver\\Order\\Item\\AggregateOptions")
+}
+
+type AggregateShipmentItem implements ShipmentItemInterface {
+    aggregate_options: [AggregateOrderOption] @resolver(class: "Nfourteen\\AggregateProductGraphQl\\Model\\Resolver\\Order\\Item\\AggregateOptions")
+}
+
+type AggregateCreditMemoItem implements CreditMemoItemInterface {
+    aggregate_options: [AggregateOrderOption] @resolver(class: "Nfourteen\\AggregateProductGraphQl\\Model\\Resolver\\Order\\Item\\AggregateOptions")
+}
+
+type AggregateOrderOption {
+    label: String!
+    values: [AggregateOrderOptionValue]!
+}
+
+type AggregateOrderOptionValue {
+    product_name: String!
+    quantity: Float!
+}
+
+type AggregateWishlistItem implements WishlistItemInterface @doc(description: "An aggregate product wish list item.") {
+}

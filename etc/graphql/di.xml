@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\CatalogGraphQl\Model\ProductInterfaceTypeResolverComposite">
+        <arguments>
+            <argument name="productTypeNameResolvers" xsi:type="array">
+                <item name="aggregate_product_type_resolver" xsi:type="object">Nfourteen\AggregateProductGraphQl\Model\AggregateProductTypeResolver</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\GraphQl\Schema\Type\Entity\DefaultMapper">
+        <arguments>
+            <argument name="map" xsi:type="array">
+                <item name="catalog_product" xsi:type="array">
+                    <item name="aggregate" xsi:type="string">AggregateProduct</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\UrlRewriteGraphQl\Model\RoutableInterfaceTypeResolver">
+        <arguments>
+            <argument name="productTypeNameResolvers" xsi:type="array">
+                <item name="aggregate_product_type_resolver" xsi:type="object">Nfourteen\AggregateProductGraphQl\Model\AggregateProductTypeResolver</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\QuoteGraphQl\Model\Resolver\CartItemTypeResolver">
+        <arguments>
+            <argument name="supportedTypes" xsi:type="array">
+                <item name="aggregate" xsi:type="string">AggregateCartItem</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\SalesGraphQl\Model\TypeResolver\OrderItem">
+        <arguments>
+            <argument name="productTypeMap" xsi:type="array">
+                <item name="aggregate" xsi:type="string">AggregateOrderItem</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\SalesGraphQl\Model\TypeResolver\InvoiceItem">
+        <arguments>
+            <argument name="productTypeMap" xsi:type="array">
+                <item name="aggregate" xsi:type="string">AggregateInvoiceItem</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\SalesGraphQl\Model\TypeResolver\ShipmentItem">
+        <arguments>
+            <argument name="productTypeMap" xsi:type="array">
+                <item name="aggregate" xsi:type="string">AggregateShipmentItem</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\SalesGraphQl\Model\TypeResolver\CreditMemoItem">
+        <arguments>
+            <argument name="productTypeMap" xsi:type="array">
+                <item name="aggregate" xsi:type="string">AggregateCreditMemoItem</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\WishlistGraphQl\Model\Resolver\Type\WishlistItemType">
+        <arguments>
+            <argument name="supportedTypes" xsi:type="array">
+                <item name="aggregate" xsi:type="string">AggregateWishlistItem</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
