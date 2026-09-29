@@ -1,5 +1,5 @@
 {
-    "name": "nfourteen/module-aggreagate-product-graph-ql",
+    "name": "nfourteen/module-aggregate-product-graph-ql",
     "description": "Aggregate product type GraphQl support",
     "type": "magento2-module",
     "require": {
@@ -8,9 +8,13 @@
         "magento/module-sales-graph-ql": "*",
         "magento/module-wishlist-graph-ql": "*"
     },
-    "license": [
-        "Proprietary"
+    "authors": [
+        {
+            "name": "David Nimorwicz",
+            "email": "dave@nfourteen.com"
+        }
     ],
+    "license": "OSL-3.0",
     "autoload": {
         "files": [
             "registration.php"
