@@ -2,6 +2,9 @@
 
 Storefront GraphQL support for the `aggregate` product type from [`Nfourteen_AggregateProduct`](https://github.com/nfourteen/module-aggregate-product), across catalog, cart, wishlist, and sales documents.
 
+> [!WARNING]
+> **Beta - not for production use.** This module is part of the Aggregate Product suite, which is in beta. It has no tagged releases yet, known bugs are still being fixed, and behavior, configuration and stored data may change between commits without an upgrade path. Use it in development or staging environments only.
+
 ## Schema
 
 | Type | Purpose |
