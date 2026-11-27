@@ -82,9 +82,9 @@ class AggregateOptionsTest extends TestCase
         $this->assertNotNull($parentItem, 'Aggregate parent item should exist in order');
 
         $deferred = $this->resolver->resolve(
-            $this->createMock(Field::class),
+            $this->createStub(Field::class),
             null,
-            $this->createMock(ResolveInfo::class),
+            $this->createStub(ResolveInfo::class),
             ['model' => $parentItem]
         );
         SyncPromise::runQueue();

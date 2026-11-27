@@ -23,13 +23,6 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\QuoteGraphQl\Model\Resolver\CartItemTypeResolver">
-        <arguments>
-            <argument name="supportedTypes" xsi:type="array">
-                <item name="aggregate" xsi:type="string">AggregateCartItem</item>
-            </argument>
-        </arguments>
-    </type>
     <type name="Magento\SalesGraphQl\Model\TypeResolver\OrderItem">
         <arguments>
             <argument name="productTypeMap" xsi:type="array">

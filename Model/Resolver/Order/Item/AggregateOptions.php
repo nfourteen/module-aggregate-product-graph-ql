@@ -25,7 +25,7 @@ class AggregateOptions implements ResolverInterface
     ) {
     }
 
-    public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
+    public function resolve(Field $field, $context, ResolveInfo $info, ?array $value = null, ?array $args = null)
     {
         return $this->valueFactory->create(function () use ($value) {
             if (!isset($value['model'])) {

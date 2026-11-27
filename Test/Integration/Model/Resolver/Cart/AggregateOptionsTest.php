@@ -153,11 +153,11 @@ class AggregateOptionsTest extends TestCase
 
     private function field(): Field
     {
-        return $this->createMock(Field::class);
+        return $this->createStub(Field::class);
     }
 
     private function info(): ResolveInfo
     {
-        return $this->createMock(ResolveInfo::class);
+        return $this->createStub(ResolveInfo::class);
     }
 }
